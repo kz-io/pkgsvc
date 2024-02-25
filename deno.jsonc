@@ -1,4 +1,10 @@
 {
+  "name": "@kz-io/pkgsvc",
+  "description": "A simple package service for kz.io repositories",
+  "version": "0.0.0.0",
+  "author": "integereleven",
+  "license": "MIT",
+  "status": "unstable",
   "lint": {
     "rules": {
       "tags": [
@@ -15,22 +21,20 @@
     }
   },
   "fmt": {
-    "options": {
-      "indentWidth": 2,
-      "lineWidth": 80,
-      "proseWrap": "preserve",
-      "useTabs": false,
-      "singleQuote": true,
-      "semiColons": true
-    }
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "proseWrap": "preserve",
+    "useTabs": false,
+    "singleQuote": true,
+    "semiColons": true
   },
   "tasks": {
-    "init": "deno run -A https://denopkg.com/partic11e/repo-svc/cli/init.ts",
-    "bump-version": "deno run -A https://denopkg.com/partic11e/repo-svc/cli/bump_version.ts",
-    "add-exception": "deno run -A https://denopkg.com/partic11e/repo-svc/cli/add_exception.ts",
-    "add-feature": "deno run -A https://denopkg.com/partic11e/repo-svc/cli/add_feature.ts",
-    "commit": "deno task pre-commit && deno run -A https://denopkg.com/partic11e/repo-svc/cli/commit.ts",
-    "pre-commit": "deno fmt && deno lint && deno test && deno doc ./mod.ts --json > _doc.json",
-    "cache": "deno cache --reload --lock=lock.json --lock-write deps.ts"
+    "test": "deno test --allow-run --allow-read --allow-write",
+    "lint": "deno lint",
+    "fmt": "deno fmt",
+    "docs": "deno doc --json ./mod.ts > _docs.json",
+    "html-docs": "deno doc --private --html --output=docs --name='Package Service' ./mod.ts ",
+    "pre-commit": "deno task test && deno task lint && deno task fmt && deno task docs",
+    "cache": "deno cache --reload --lock=deno.lock --lock-write deps.ts"
   }
 }

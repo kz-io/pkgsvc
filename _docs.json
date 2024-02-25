@@ -1,0 +1,4277 @@
+[
+  {
+    "kind": "function",
+    "name": "checkPermissions",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/check_permissions.ts",
+      "line": 27,
+      "col": 0,
+      "byteIndex": 709
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Check if a list of permissions are granted, and request them if not.\n",
+      "tags": [
+        {
+          "kind": "param",
+          "name": "permissions",
+          "doc": "The permissions to check, and request if not granted.\n"
+        },
+        {
+          "kind": "return",
+          "doc": "Whether all permissions are granted.\n"
+        },
+        {
+          "kind": "example",
+          "doc": "```ts\nconst permissions = [\n  { name: 'read', path: '/etc' },\n  { name: 'write', path: '/etc' },\n];\n\nconst result = await checkPermissions(permissions);\n\nconsole.log(result); // true or false depending on the granted permissions\n```"
+        }
+      ]
+    },
+    "functionDef": {
+      "params": [
+        {
+          "kind": "identifier",
+          "name": "permissions",
+          "optional": false,
+          "tsType": {
+            "repr": "",
+            "kind": "array",
+            "array": {
+              "repr": "Deno.PermissionDescriptor",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": null,
+                "typeName": "Deno.PermissionDescriptor"
+              }
+            }
+          }
+        }
+      ],
+      "returnType": {
+        "repr": "Promise",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "boolean",
+              "kind": "keyword",
+              "keyword": "boolean"
+            }
+          ],
+          "typeName": "Promise"
+        }
+      },
+      "hasBody": true,
+      "isAsync": true,
+      "isGenerator": false,
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "class",
+    "name": "Cli",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+      "line": 35,
+      "col": 0,
+      "byteIndex": 766
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Provides functionality for creating a command line interface."
+    },
+    "classDef": {
+      "isAbstract": false,
+      "constructors": [
+        {
+          "jsDoc": {
+            "doc": "Create a new cli.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "name",
+                "doc": "The name of the cli."
+              },
+              {
+                "kind": "param",
+                "name": "options",
+                "doc": "The options for the cli.\n\nIf `options.displayName` is not provided, it will default to `name`.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\nconst cli = new Cli('MyCli', { verbosity: CliVerbosity.Info });\n```"
+              }
+            ]
+          },
+          "accessibility": null,
+          "hasBody": true,
+          "name": "constructor",
+          "params": [
+            {
+              "accessibility": "protected",
+              "kind": "identifier",
+              "name": "name",
+              "optional": false,
+              "tsType": {
+                "repr": "string",
+                "kind": "keyword",
+                "keyword": "string"
+              }
+            },
+            {
+              "kind": "assign",
+              "left": {
+                "kind": "identifier",
+                "name": "options",
+                "optional": false,
+                "tsType": {
+                  "repr": "Partial",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": [
+                      {
+                        "repr": "ICliOptions",
+                        "kind": "typeRef",
+                        "typeRef": {
+                          "typeParams": null,
+                          "typeName": "ICliOptions"
+                        }
+                      }
+                    ],
+                    "typeName": "Partial"
+                  }
+                }
+              },
+              "right": "[UNSUPPORTED]",
+              "tsType": null
+            }
+          ],
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 61,
+            "col": 2,
+            "byteIndex": 1338
+          }
+        }
+      ],
+      "properties": [
+        {
+          "jsDoc": {
+            "doc": "The options for the cli."
+          },
+          "tsType": {
+            "repr": "ICliOptions",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "ICliOptions"
+            }
+          },
+          "readonly": false,
+          "accessibility": "protected",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "options",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 39,
+            "col": 2,
+            "byteIndex": 829
+          }
+        }
+      ],
+      "indexSignatures": [],
+      "methods": [
+        {
+          "jsDoc": {
+            "doc": "Print the ascii banner for the cli."
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "printBanner",
+          "kind": "method",
+          "functionDef": {
+            "params": [],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 74,
+            "col": 2,
+            "byteIndex": 1615
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Get the formatted name for the cli."
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "printName",
+          "kind": "getter",
+          "functionDef": {
+            "params": [],
+            "returnType": {
+              "repr": "string",
+              "kind": "keyword",
+              "keyword": "string"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 84,
+            "col": 2,
+            "byteIndex": 1792
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Print a formatted message.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to format and print."
+              },
+              {
+                "kind": "param",
+                "name": "formatter",
+                "doc": "The function to use to format the message.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.printFormatted('Hello, world!', (str) => bold(str));\n```"
+              }
+            ]
+          },
+          "accessibility": "protected",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "printFormatted",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "formatter",
+                "optional": false,
+                "tsType": {
+                  "repr": "",
+                  "kind": "fnOrConstructor",
+                  "fnOrConstructor": {
+                    "constructor": false,
+                    "tsType": {
+                      "repr": "string",
+                      "kind": "keyword",
+                      "keyword": "string"
+                    },
+                    "params": [
+                      {
+                        "kind": "identifier",
+                        "name": "str",
+                        "optional": false,
+                        "tsType": {
+                          "repr": "string",
+                          "kind": "keyword",
+                          "keyword": "string"
+                        }
+                      }
+                    ],
+                    "typeParams": []
+                  }
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 103,
+            "col": 2,
+            "byteIndex": 2271
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Print a formatted message at a specific verbosity level.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "level",
+                "doc": "The verbosity level to print the message at."
+              },
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to format and print."
+              },
+              {
+                "kind": "param",
+                "name": "formatter",
+                "doc": "The function to use to format the message.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.printFormattedLevel(CliVerbosity.Info, 'Hello, world!', (str) => bold(str));\n```"
+              }
+            ]
+          },
+          "accessibility": "protected",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "printFormattedLevel",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "level",
+                "optional": false,
+                "tsType": {
+                  "repr": "number",
+                  "kind": "keyword",
+                  "keyword": "number"
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "formatter",
+                "optional": false,
+                "tsType": {
+                  "repr": "",
+                  "kind": "fnOrConstructor",
+                  "fnOrConstructor": {
+                    "constructor": false,
+                    "tsType": {
+                      "repr": "string",
+                      "kind": "keyword",
+                      "keyword": "string"
+                    },
+                    "params": [
+                      {
+                        "kind": "identifier",
+                        "name": "str",
+                        "optional": false,
+                        "tsType": {
+                          "repr": "string",
+                          "kind": "keyword",
+                          "keyword": "string"
+                        }
+                      }
+                    ],
+                    "typeParams": []
+                  }
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 126,
+            "col": 2,
+            "byteIndex": 2938
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Describe a request, action, or result.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message describing a request, action, or result.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.describe('This is a description.');\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "describe",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 151,
+            "col": 2,
+            "byteIndex": 3447
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Write a message to the cli.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to write.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.write('Hello, world!');\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "write",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 170,
+            "col": 2,
+            "byteIndex": 3894
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Indicate a task is done.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message indicating a task is done.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.done('Task is done.');\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "done",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 184,
+            "col": 2,
+            "byteIndex": 4157
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Indicate an error.\n\nOnly displays if verbosity is set to `CliVerbosity.Error` or higher.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message indicating an error.\n"
+              },
+              {
+                "kind": "unsupported",
+                "value": "@see {@link CliVerbosity}\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.error('An error occurred.');\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "error",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 202,
+            "col": 2,
+            "byteIndex": 4528
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Log an info message.\n\nOnly displays if verbosity is set to `CliVerbosity.Info` or higher.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to log.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.info('This is an info message.');\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "info",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 218,
+            "col": 2,
+            "byteIndex": 4880
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Log a warning message.\n\nOnly displays if verbosity is set to {@link CliVerbosity.Warn` or higher.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to log.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.warn('This is a warning message.');\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "warn",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 234,
+            "col": 2,
+            "byteIndex": 5241
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Log a success message.\n\nOnly displays if verbosity is set to {@link CliVerbosity.Info` or higher.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to log.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.success('This is a success message.');\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "success",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 250,
+            "col": 2,
+            "byteIndex": 5607
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Log a debug message.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to log.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.debug('This is a debug message.');\n```"
+              }
+            ]
+          },
+          "accessibility": "protected",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "printDebug",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "level",
+                "optional": false,
+                "tsType": {
+                  "repr": "CliVerbosity",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "CliVerbosity"
+                  }
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 264,
+            "col": 2,
+            "byteIndex": 5885
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Log a debug message.\n\nOnly displays if verbosity is set to {@link CliVerbosity.Debug` or higher.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to log.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.debug('This is a debug message.');\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "debug",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 282,
+            "col": 2,
+            "byteIndex": 6326
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Log a trace message.\n\nOnly displays if verbosity is set to {@link CliVerbosity.Trace}.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to log.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\ncli.trace('This is a trace message.');\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "trace",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 298,
+            "col": 2,
+            "byteIndex": 6662
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Get the formatted string of the key/value pair options.\n\nA `?` is added to the end of the formatted string to indicate that the user can enter `?` to see the options detail.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "charOptions",
+                "doc": "The key/value pair options."
+              },
+              {
+                "kind": "param",
+                "name": "defaultString",
+                "doc": "The default option key.\n"
+              },
+              {
+                "kind": "return",
+                "doc": "The formatted string of the key/value pair options.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\nconst options = { y: 'Yes', n: 'No' };\nconst formattedOptions = cli.getCharOptionsString(options, 'y');\n\nconsole.log(formattedOptions); // (Y/n/?)\n```"
+              }
+            ]
+          },
+          "accessibility": "protected",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "getCharOptionsString",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "charOptions",
+                "optional": true,
+                "tsType": {
+                  "repr": "Record",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": [
+                      {
+                        "repr": "string",
+                        "kind": "keyword",
+                        "keyword": "string"
+                      },
+                      {
+                        "repr": "string",
+                        "kind": "keyword",
+                        "keyword": "string"
+                      }
+                    ],
+                    "typeName": "Record"
+                  }
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "defaultString",
+                "optional": true,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "string",
+              "kind": "keyword",
+              "keyword": "string"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 320,
+            "col": 2,
+            "byteIndex": 7340
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Validate a value against the key/value pair options.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "options",
+                "doc": "The key/value pair options."
+              },
+              {
+                "kind": "param",
+                "name": "value",
+                "doc": "The value to validate.\n"
+              },
+              {
+                "kind": "return",
+                "doc": "Whether the value is valid.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\nconst options = { y: 'Yes', n: 'No' };\nconst value = 'y';\nconst valid = cli.validateCharOptions(options, value);\n\nconsole.log(valid); // true\n```"
+              }
+            ]
+          },
+          "accessibility": "protected",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "validateCharOptions",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "options",
+                "optional": true,
+                "tsType": {
+                  "repr": "Record",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": [
+                      {
+                        "repr": "string",
+                        "kind": "keyword",
+                        "keyword": "string"
+                      },
+                      {
+                        "repr": "string",
+                        "kind": "keyword",
+                        "keyword": "string"
+                      }
+                    ],
+                    "typeName": "Record"
+                  }
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "value",
+                "optional": true,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "boolean",
+              "kind": "keyword",
+              "keyword": "boolean"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 355,
+            "col": 2,
+            "byteIndex": 8198
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Get the formatted prompt message.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to prompt the user with."
+              },
+              {
+                "kind": "param",
+                "name": "options",
+                "doc": "The options for the prompt.\n"
+              },
+              {
+                "kind": "return",
+                "doc": "The formatted prompt message.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\nconst message = 'What is your name?';\nconst options = { required: true, default: 'John' };\nconst formattedPrompt = cli.getPromptMessage(message, options);\n\nconsole.log(formattedPrompt); // [MyCli] What is your name? > John\n```"
+              }
+            ]
+          },
+          "accessibility": "protected",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "getPromptMessage",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "options",
+                "optional": false,
+                "tsType": {
+                  "repr": "TPromptOptions",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "TPromptOptions"
+                  }
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "string",
+              "kind": "keyword",
+              "keyword": "string"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 407,
+            "col": 2,
+            "byteIndex": 9454
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Prompt the user for a response.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to prompt the user with."
+              },
+              {
+                "kind": "param",
+                "name": "options",
+                "doc": "The options for the prompt.\n"
+              },
+              {
+                "kind": "return",
+                "doc": "The user's response.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\nconst message = 'What is your name?';\nconst options = { required: true, default: 'John' };\nconst response = cli.prompt(message, options);\n\nconsole.log(response); // John, or the user's response\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "prompt",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              },
+              {
+                "kind": "assign",
+                "left": {
+                  "kind": "identifier",
+                  "name": "options",
+                  "optional": false,
+                  "tsType": {
+                    "repr": "TPromptOptions",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "TPromptOptions"
+                    }
+                  }
+                },
+                "right": "[UNSUPPORTED]",
+                "tsType": null
+              }
+            ],
+            "returnType": {
+              "repr": "",
+              "kind": "conditional",
+              "conditionalType": {
+                "checkType": {
+                  "repr": "",
+                  "kind": "indexedAccess",
+                  "indexedAccess": {
+                    "readonly": false,
+                    "objType": {
+                      "repr": "TPromptOptions",
+                      "kind": "typeRef",
+                      "typeRef": {
+                        "typeParams": null,
+                        "typeName": "TPromptOptions"
+                      }
+                    },
+                    "indexType": {
+                      "repr": "required",
+                      "kind": "literal",
+                      "literal": {
+                        "kind": "string",
+                        "string": "required"
+                      }
+                    }
+                  }
+                },
+                "extendsType": {
+                  "repr": "true",
+                  "kind": "literal",
+                  "literal": {
+                    "kind": "boolean",
+                    "boolean": true
+                  }
+                },
+                "trueType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                },
+                "falseType": {
+                  "repr": "",
+                  "kind": "conditional",
+                  "conditionalType": {
+                    "checkType": {
+                      "repr": "",
+                      "kind": "indexedAccess",
+                      "indexedAccess": {
+                        "readonly": false,
+                        "objType": {
+                          "repr": "TPromptOptions",
+                          "kind": "typeRef",
+                          "typeRef": {
+                            "typeParams": null,
+                            "typeName": "TPromptOptions"
+                          }
+                        },
+                        "indexType": {
+                          "repr": "default",
+                          "kind": "literal",
+                          "literal": {
+                            "kind": "string",
+                            "string": "default"
+                          }
+                        }
+                      }
+                    },
+                    "extendsType": {
+                      "repr": "true",
+                      "kind": "literal",
+                      "literal": {
+                        "kind": "boolean",
+                        "boolean": true
+                      }
+                    },
+                    "trueType": {
+                      "repr": "string",
+                      "kind": "keyword",
+                      "keyword": "string"
+                    },
+                    "falseType": {
+                      "repr": "",
+                      "kind": "union",
+                      "union": [
+                        {
+                          "repr": "string",
+                          "kind": "keyword",
+                          "keyword": "string"
+                        },
+                        {
+                          "repr": "undefined",
+                          "kind": "keyword",
+                          "keyword": "undefined"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 441,
+            "col": 2,
+            "byteIndex": 10447
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Prompt the user for a yes/no response.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to prompt the user with."
+              },
+              {
+                "kind": "param",
+                "name": "options",
+                "doc": "The options for the prompt.\n"
+              },
+              {
+                "kind": "return",
+                "doc": "The user's response.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\nconst message = 'Do you like ice cream?';\nconst options = { required: true, default: 'Y' };\nconst response = cli.promptYesNo(message, options);\n\nconsole.log(response); // true, or the user's response (should also be true)\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "promptYesNo",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              },
+              {
+                "kind": "assign",
+                "left": {
+                  "kind": "identifier",
+                  "name": "options",
+                  "optional": false,
+                  "tsType": {
+                    "repr": "TPromptOptions",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": [
+                        {
+                          "repr": "",
+                          "kind": "union",
+                          "union": [
+                            {
+                              "repr": "Y",
+                              "kind": "literal",
+                              "literal": {
+                                "kind": "string",
+                                "string": "Y"
+                              }
+                            },
+                            {
+                              "repr": "N",
+                              "kind": "literal",
+                              "literal": {
+                                "kind": "string",
+                                "string": "N"
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "typeName": "TPromptOptions"
+                    }
+                  }
+                },
+                "right": "[UNSUPPORTED]",
+                "tsType": null
+              }
+            ],
+            "returnType": {
+              "repr": "boolean",
+              "kind": "keyword",
+              "keyword": "boolean"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 489,
+            "col": 2,
+            "byteIndex": 11766
+          }
+        },
+        {
+          "jsDoc": {
+            "doc": "Prompt the user for a confirmation.\n\nAny response other than `y` or `Y` will return `false`.\n",
+            "tags": [
+              {
+                "kind": "param",
+                "name": "message",
+                "doc": "The message to prompt the user with.\n"
+              },
+              {
+                "kind": "return",
+                "doc": "The user's response.\n"
+              },
+              {
+                "kind": "example",
+                "doc": "```ts\nconst message = 'Are you sure you want to delete this file?';\nconst response = cli.confirm(message);\n\nconsole.log(response); // true or false\n```"
+              }
+            ]
+          },
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "confirm",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "boolean",
+              "kind": "keyword",
+              "keyword": "boolean"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 536,
+            "col": 2,
+            "byteIndex": 12848
+          }
+        },
+        {
+          "accessibility": "protected",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "printWhatIf",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "actionName",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "message",
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 543,
+            "col": 2,
+            "byteIndex": 13023
+          }
+        },
+        {
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "whatif",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "object",
+                "props": [
+                  {
+                    "kind": "assign",
+                    "key": "action",
+                    "value": null
+                  },
+                  {
+                    "kind": "assign",
+                    "key": "description",
+                    "value": null
+                  },
+                  {
+                    "kind": "assign",
+                    "key": "handler",
+                    "value": null
+                  }
+                ],
+                "optional": false,
+                "tsType": {
+                  "repr": "IWhatIfAction",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "IWhatIfAction"
+                  }
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "number",
+              "kind": "keyword",
+              "keyword": "number"
+            },
+            "hasBody": true,
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": [
+              {
+                "name": "T"
+              }
+            ]
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 559,
+            "col": 2,
+            "byteIndex": 13629
+          }
+        },
+        {
+          "accessibility": "public",
+          "optional": false,
+          "isAbstract": false,
+          "isStatic": false,
+          "name": "asyncWhatif",
+          "kind": "method",
+          "functionDef": {
+            "params": [
+              {
+                "kind": "object",
+                "props": [
+                  {
+                    "kind": "assign",
+                    "key": "action",
+                    "value": null
+                  },
+                  {
+                    "kind": "assign",
+                    "key": "description",
+                    "value": null
+                  },
+                  {
+                    "kind": "assign",
+                    "key": "handler",
+                    "value": null
+                  }
+                ],
+                "optional": false,
+                "tsType": {
+                  "repr": "IWhatIfAction",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": [
+                      {
+                        "repr": "true",
+                        "kind": "literal",
+                        "literal": {
+                          "kind": "boolean",
+                          "boolean": true
+                        }
+                      }
+                    ],
+                    "typeName": "IWhatIfAction"
+                  }
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "Promise",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": [
+                  {
+                    "repr": "number",
+                    "kind": "keyword",
+                    "keyword": "number"
+                  }
+                ],
+                "typeName": "Promise"
+              }
+            },
+            "hasBody": true,
+            "isAsync": true,
+            "isGenerator": false,
+            "typeParams": []
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/cli.ts",
+            "line": 571,
+            "col": 2,
+            "byteIndex": 13897
+          }
+        }
+      ],
+      "extends": null,
+      "implements": [],
+      "typeParams": [],
+      "superTypeParams": []
+    }
+  },
+  {
+    "kind": "function",
+    "name": "createTemplate",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/create_template.ts",
+      "line": 61,
+      "col": 0,
+      "byteIndex": 1295
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Create a template callback function from a template string and keys.\n",
+      "tags": [
+        {
+          "kind": "param",
+          "name": "strings",
+          "doc": "The template strings array."
+        },
+        {
+          "kind": "param",
+          "name": "keys",
+          "doc": "The keys to use in the template.\n"
+        },
+        {
+          "kind": "return",
+          "doc": "The template callback function.\n"
+        },
+        {
+          "kind": "example",
+          "doc": "```ts\nconst template = createTemplate<\n { name: string }\n>`Hello, ${'name'}!`;\n\nconst result = template({ name: 'world' });\n\nconsole.log(result); // \"Hello, world!\"\n```"
+        }
+      ]
+    },
+    "functionDef": {
+      "params": [
+        {
+          "kind": "identifier",
+          "name": "strings",
+          "optional": false,
+          "tsType": {
+            "repr": "TemplateStringsArray",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "TemplateStringsArray"
+            }
+          }
+        },
+        {
+          "kind": "rest",
+          "arg": {
+            "kind": "identifier",
+            "name": "keys",
+            "optional": false,
+            "tsType": null
+          },
+          "tsType": {
+            "repr": "",
+            "kind": "array",
+            "array": {
+              "repr": "",
+              "kind": "parenthesized",
+              "parenthesized": {
+                "repr": "",
+                "kind": "union",
+                "union": [
+                  {
+                    "repr": "P",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "P"
+                    }
+                  },
+                  {
+                    "repr": "TemplateCallback",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": [
+                        {
+                          "repr": "T",
+                          "kind": "typeRef",
+                          "typeRef": {
+                            "typeParams": null,
+                            "typeName": "T"
+                          }
+                        }
+                      ],
+                      "typeName": "TemplateCallback"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "returnType": {
+        "repr": "TemplateCallback",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "T",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": null,
+                "typeName": "T"
+              }
+            }
+          ],
+          "typeName": "TemplateCallback"
+        }
+      },
+      "hasBody": true,
+      "isAsync": false,
+      "isGenerator": false,
+      "typeParams": [
+        {
+          "name": "P",
+          "constraint": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          }
+        },
+        {
+          "name": "T",
+          "constraint": {
+            "repr": "Props",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Props"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "kind": "function",
+    "name": "createFilename",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/create_filename.ts",
+      "line": 26,
+      "col": 0,
+      "byteIndex": 565
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Create a filename from a feature name.\n",
+      "tags": [
+        {
+          "kind": "param",
+          "name": "name",
+          "doc": "The name of the feature to create a filename for.\n"
+        },
+        {
+          "kind": "return",
+          "doc": "The filename for the feature.\n"
+        },
+        {
+          "kind": "example",
+          "doc": "```ts\nconst filename = createFilename(\"MyFeature\");\n\nconsole.log(filename);  // my_feature\n```"
+        }
+      ]
+    },
+    "functionDef": {
+      "params": [
+        {
+          "kind": "identifier",
+          "name": "name",
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          }
+        }
+      ],
+      "returnType": {
+        "repr": "string",
+        "kind": "keyword",
+        "keyword": "string"
+      },
+      "hasBody": true,
+      "isAsync": false,
+      "isGenerator": false,
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "function",
+    "name": "denoConfigExists",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/deno_config.ts",
+      "line": 16,
+      "col": 0,
+      "byteIndex": 376
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Check if the `deno.jsonc` file exists in the project root directory.\n",
+      "tags": [
+        {
+          "kind": "param",
+          "name": "rootDir",
+          "doc": "The root directory of the project.\n"
+        },
+        {
+          "kind": "return",
+          "doc": "Whether the `deno.jsonc` file exists."
+        }
+      ]
+    },
+    "functionDef": {
+      "params": [
+        {
+          "kind": "identifier",
+          "name": "rootDir",
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          }
+        }
+      ],
+      "returnType": {
+        "repr": "Promise",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "boolean",
+              "kind": "keyword",
+              "keyword": "boolean"
+            }
+          ],
+          "typeName": "Promise"
+        }
+      },
+      "hasBody": true,
+      "isAsync": true,
+      "isGenerator": false,
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "function",
+    "name": "readDenoConfig",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/deno_config.ts",
+      "line": 27,
+      "col": 0,
+      "byteIndex": 675
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Read the `deno.jsonc` file from the project root directory.\n",
+      "tags": [
+        {
+          "kind": "param",
+          "name": "rootDir",
+          "doc": "The root directory of the project.\n"
+        },
+        {
+          "kind": "return",
+          "doc": "The parsed `deno.jsonc` file."
+        }
+      ]
+    },
+    "functionDef": {
+      "params": [
+        {
+          "kind": "identifier",
+          "name": "rootDir",
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          }
+        }
+      ],
+      "returnType": {
+        "repr": "Promise",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "unknown",
+              "kind": "keyword",
+              "keyword": "unknown"
+            }
+          ],
+          "typeName": "Promise"
+        }
+      },
+      "hasBody": true,
+      "isAsync": true,
+      "isGenerator": false,
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "function",
+    "name": "writeDenoConfig",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/deno_config.ts",
+      "line": 41,
+      "col": 0,
+      "byteIndex": 1113
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Write the `deno.jsonc` file to the project root directory.\n",
+      "tags": [
+        {
+          "kind": "param",
+          "name": "rootDir",
+          "doc": "The root directory of the project."
+        },
+        {
+          "kind": "param",
+          "name": "config",
+          "doc": "The configuration to write to the `deno.jsonc` file."
+        }
+      ]
+    },
+    "functionDef": {
+      "params": [
+        {
+          "kind": "identifier",
+          "name": "rootDir",
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          }
+        },
+        {
+          "kind": "identifier",
+          "name": "config",
+          "optional": false,
+          "tsType": {
+            "repr": "unknown",
+            "kind": "keyword",
+            "keyword": "unknown"
+          }
+        }
+      ],
+      "returnType": {
+        "repr": "Promise",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            }
+          ],
+          "typeName": "Promise"
+        }
+      },
+      "hasBody": true,
+      "isAsync": true,
+      "isGenerator": false,
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "function",
+    "name": "getRepoDetails",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/get_repo_details.ts",
+      "line": 14,
+      "col": 0,
+      "byteIndex": 337
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Get the organization and repository name for the git repository.\n",
+      "tags": [
+        {
+          "kind": "return",
+          "doc": "The organization and repository name for the git repository."
+        }
+      ]
+    },
+    "functionDef": {
+      "params": [],
+      "returnType": {
+        "repr": "Promise",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "",
+              "kind": "tuple",
+              "tuple": [
+                {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                },
+                {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              ]
+            }
+          ],
+          "typeName": "Promise"
+        }
+      },
+      "hasBody": true,
+      "isAsync": true,
+      "isGenerator": false,
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "function",
+    "name": "parseGlobalArgs",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/parse_global_args.ts",
+      "line": 47,
+      "col": 0,
+      "byteIndex": 1179
+    },
+    "declarationKind": "export",
+    "functionDef": {
+      "params": [
+        {
+          "kind": "identifier",
+          "name": "args",
+          "optional": false,
+          "tsType": {
+            "repr": "",
+            "kind": "array",
+            "array": {
+              "repr": "string",
+              "kind": "keyword",
+              "keyword": "string"
+            }
+          }
+        }
+      ],
+      "returnType": {
+        "repr": "IGlobalOpts",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": null,
+          "typeName": "IGlobalOpts"
+        }
+      },
+      "hasBody": true,
+      "isAsync": false,
+      "isGenerator": false,
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IAbstractClassProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 128,
+      "col": 0,
+      "byteIndex": 2366
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "abstract",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 129,
+            "col": 2,
+            "byteIndex": 2407
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "boolean",
+            "kind": "keyword",
+            "keyword": "boolean"
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "ICliOptions",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 14,
+      "col": 0,
+      "byteIndex": 276
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Describes options for the {@link Cli} class."
+    },
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "verbosity",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 18,
+            "col": 2,
+            "byteIndex": 376
+          },
+          "jsDoc": {
+            "doc": "The verbosity level for the {@link Cli} instance."
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "CliVerbosity",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "CliVerbosity"
+            }
+          },
+          "typeParams": []
+        },
+        {
+          "name": "rgb24Color",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 23,
+            "col": 2,
+            "byteIndex": 467
+          },
+          "jsDoc": {
+            "doc": "The RGB24 color for the {@link Cli} instance."
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "number",
+            "kind": "keyword",
+            "keyword": "number"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "displayName",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 28,
+            "col": 2,
+            "byteIndex": 554
+          },
+          "jsDoc": {
+            "doc": "The display name for the {@link Cli} instance."
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "separator",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 33,
+            "col": 2,
+            "byteIndex": 656
+          },
+          "jsDoc": {
+            "doc": "The request/response separator for the {@link Cli} instance."
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "banner",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 38,
+            "col": 2,
+            "byteIndex": 736
+          },
+          "jsDoc": {
+            "doc": "The banner for the {@link Cli} instance."
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "whatif",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 43,
+            "col": 2,
+            "byteIndex": 835
+          },
+          "jsDoc": {
+            "doc": "Whether to use the `whatif` flag for the {@link Cli} instance."
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "boolean",
+            "kind": "keyword",
+            "keyword": "boolean"
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IDecoratorProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 141,
+      "col": 0,
+      "byteIndex": 2569
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "target",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 142,
+            "col": 2,
+            "byteIndex": 2606
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "",
+            "kind": "union",
+            "union": [
+              {
+                "repr": "class",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "class"
+                }
+              },
+              {
+                "repr": "method",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "method"
+                }
+              },
+              {
+                "repr": "property",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "property"
+                }
+              },
+              {
+                "repr": "parameter",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "parameter"
+                }
+              },
+              {
+                "repr": "accessor",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "accessor"
+                }
+              }
+            ]
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IDependencyProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 95,
+      "col": 0,
+      "byteIndex": 1837
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "deps",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 96,
+            "col": 2,
+            "byteIndex": 1875
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "IDefaultDeps",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "IDefaultDeps"
+            }
+          },
+          "typeParams": []
+        },
+        {
+          "name": "devDeps",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 97,
+            "col": 2,
+            "byteIndex": 1897
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "IDefaultDevDeps",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "IDefaultDevDeps"
+            }
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IEnumProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 150,
+      "col": 0,
+      "byteIndex": 2750
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "bitwise",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 151,
+            "col": 2,
+            "byteIndex": 2782
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "boolean",
+            "kind": "keyword",
+            "keyword": "boolean"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "keyValueDescriptions",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 152,
+            "col": 2,
+            "byteIndex": 2802
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "",
+            "kind": "array",
+            "array": {
+              "repr": "",
+              "kind": "tuple",
+              "tuple": [
+                {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                },
+                {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                },
+                {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                }
+              ]
+            }
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IExceptionProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 145,
+      "col": 0,
+      "byteIndex": 2677
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "message",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 146,
+            "col": 2,
+            "byteIndex": 2714
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "code",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 147,
+            "col": 2,
+            "byteIndex": 2733
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IFeatureProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 112,
+      "col": 0,
+      "byteIndex": 2110
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "internal",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 113,
+            "col": 2,
+            "byteIndex": 2145
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "boolean",
+            "kind": "keyword",
+            "keyword": "boolean"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "name",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 114,
+            "col": 2,
+            "byteIndex": 2166
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "type",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 115,
+            "col": 2,
+            "byteIndex": 2182
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "",
+            "kind": "union",
+            "union": [
+              {
+                "repr": "class",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "class"
+                }
+              },
+              {
+                "repr": "function",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "function"
+                }
+              },
+              {
+                "repr": "interface",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "interface"
+                }
+              },
+              {
+                "repr": "type alias",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "type alias"
+                }
+              },
+              {
+                "repr": "enum",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "enum"
+                }
+              },
+              {
+                "repr": "decorator",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "decorator"
+                }
+              },
+              {
+                "repr": "exception",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "exception"
+                }
+              },
+              {
+                "repr": "value",
+                "kind": "literal",
+                "literal": {
+                  "kind": "string",
+                  "string": "value"
+                }
+              }
+            ]
+          },
+          "typeParams": []
+        },
+        {
+          "name": "description",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 124,
+            "col": 2,
+            "byteIndex": 2322
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "filename",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 125,
+            "col": 2,
+            "byteIndex": 2345
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IFileProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 107,
+      "col": 0,
+      "byteIndex": 2038
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "path",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 108,
+            "col": 2,
+            "byteIndex": 2070
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "description",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 109,
+            "col": 2,
+            "byteIndex": 2086
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IFunctionProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 137,
+      "col": 0,
+      "byteIndex": 2514
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "async",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 138,
+            "col": 2,
+            "byteIndex": 2550
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "boolean",
+            "kind": "keyword",
+            "keyword": "boolean"
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IGlobalOpts",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 74,
+      "col": 0,
+      "byteIndex": 1544
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "testing",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 75,
+            "col": 2,
+            "byteIndex": 1577
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "",
+            "kind": "union",
+            "union": [
+              {
+                "repr": "string",
+                "kind": "keyword",
+                "keyword": "string"
+              },
+              {
+                "repr": "false",
+                "kind": "literal",
+                "literal": {
+                  "kind": "boolean",
+                  "boolean": false
+                }
+              }
+            ]
+          },
+          "typeParams": []
+        },
+        {
+          "name": "verbose",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 76,
+            "col": 2,
+            "byteIndex": 1604
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "number",
+            "kind": "keyword",
+            "keyword": "number"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "whatif",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 77,
+            "col": 2,
+            "byteIndex": 1623
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "boolean",
+            "kind": "keyword",
+            "keyword": "boolean"
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IMetaProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 80,
+      "col": 0,
+      "byteIndex": 1643
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "year",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 81,
+            "col": 2,
+            "byteIndex": 1675
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "date",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 82,
+            "col": 2,
+            "byteIndex": 1691
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IPackageProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 100,
+      "col": 0,
+      "byteIndex": 1926
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "name",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 101,
+            "col": 2,
+            "byteIndex": 1961
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "description",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 102,
+            "col": 2,
+            "byteIndex": 1977
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "version",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 103,
+            "col": 2,
+            "byteIndex": 2000
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "status",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 104,
+            "col": 2,
+            "byteIndex": 2019
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "ISingletonClassProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 132,
+      "col": 0,
+      "byteIndex": 2429
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "singleton",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 133,
+            "col": 2,
+            "byteIndex": 2471
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "boolean",
+            "kind": "keyword",
+            "keyword": "boolean"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "constant",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 134,
+            "col": 2,
+            "byteIndex": 2493
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "IWhatIfAction",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 68,
+      "col": 0,
+      "byteIndex": 1374
+    },
+    "declarationKind": "export",
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "action",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 69,
+            "col": 2,
+            "byteIndex": 1436
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "description",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 70,
+            "col": 2,
+            "byteIndex": 1454
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "handler",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 71,
+            "col": 2,
+            "byteIndex": 1477
+          },
+          "params": [],
+          "computed": false,
+          "optional": false,
+          "tsType": {
+            "repr": "",
+            "kind": "conditional",
+            "conditionalType": {
+              "checkType": {
+                "repr": "A",
+                "kind": "typeRef",
+                "typeRef": {
+                  "typeParams": null,
+                  "typeName": "A"
+                }
+              },
+              "extendsType": {
+                "repr": "true",
+                "kind": "literal",
+                "literal": {
+                  "kind": "boolean",
+                  "boolean": true
+                }
+              },
+              "trueType": {
+                "repr": "",
+                "kind": "fnOrConstructor",
+                "fnOrConstructor": {
+                  "constructor": false,
+                  "tsType": {
+                    "repr": "Promise",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": [
+                        {
+                          "repr": "number",
+                          "kind": "keyword",
+                          "keyword": "number"
+                        }
+                      ],
+                      "typeName": "Promise"
+                    }
+                  },
+                  "params": [],
+                  "typeParams": []
+                }
+              },
+              "falseType": {
+                "repr": "",
+                "kind": "fnOrConstructor",
+                "fnOrConstructor": {
+                  "constructor": false,
+                  "tsType": {
+                    "repr": "number",
+                    "kind": "keyword",
+                    "keyword": "number"
+                  },
+                  "params": [],
+                  "typeParams": []
+                }
+              }
+            }
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": [
+        {
+          "name": "A",
+          "constraint": {
+            "repr": "boolean",
+            "kind": "keyword",
+            "keyword": "boolean"
+          },
+          "default": {
+            "repr": "false",
+            "kind": "literal",
+            "literal": {
+              "kind": "boolean",
+              "boolean": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "kind": "interface",
+    "name": "TPromptOptions",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+      "line": 49,
+      "col": 0,
+      "byteIndex": 918
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Describe options for the {@link Cli#prompt} method."
+    },
+    "interfaceDef": {
+      "extends": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "required",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 53,
+            "col": 2,
+            "byteIndex": 1030
+          },
+          "jsDoc": {
+            "doc": "Whether a response is required."
+          },
+          "params": [],
+          "computed": false,
+          "optional": true,
+          "tsType": {
+            "repr": "boolean",
+            "kind": "keyword",
+            "keyword": "boolean"
+          },
+          "typeParams": []
+        },
+        {
+          "name": "default",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 58,
+            "col": 2,
+            "byteIndex": 1158
+          },
+          "jsDoc": {
+            "doc": "The default value for the {@link Cli#prompt}. This is returned if no response is given."
+          },
+          "params": [],
+          "computed": false,
+          "optional": true,
+          "tsType": {
+            "repr": "O",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "O"
+            }
+          },
+          "typeParams": []
+        },
+        {
+          "name": "charOptions",
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/interfaces.ts",
+            "line": 65,
+            "col": 2,
+            "byteIndex": 1338
+          },
+          "jsDoc": {
+            "doc": "The key/value pair options to constraint a {@link Cli#prompt} reponse to.\n\nThe keys are the options, and the values are the descriptions."
+          },
+          "params": [],
+          "computed": false,
+          "optional": true,
+          "tsType": {
+            "repr": "Record",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                },
+                {
+                  "repr": "O",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "O"
+                  }
+                }
+              ],
+              "typeName": "Record"
+            }
+          },
+          "typeParams": []
+        }
+      ],
+      "callSignatures": [],
+      "indexSignatures": [],
+      "typeParams": [
+        {
+          "name": "O",
+          "constraint": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "default": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "DependencyProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 90,
+      "col": 0,
+      "byteIndex": 1964
+    },
+    "declarationKind": "export",
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "",
+        "kind": "typeLiteral",
+        "typeLiteral": {
+          "methods": [],
+          "properties": [
+            {
+              "name": "deps",
+              "params": [],
+              "computed": false,
+              "optional": false,
+              "tsType": {
+                "repr": "IDependencyProps",
+                "kind": "typeRef",
+                "typeRef": {
+                  "typeParams": null,
+                  "typeName": "IDependencyProps"
+                }
+              },
+              "typeParams": []
+            }
+          ],
+          "callSignatures": [],
+          "indexSignatures": []
+        }
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "ExceptionProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 100,
+      "col": 0,
+      "byteIndex": 2447
+    },
+    "declarationKind": "export",
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "",
+        "kind": "intersection",
+        "intersection": [
+          {
+            "repr": "FeatureProps",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "FeatureProps"
+            }
+          },
+          {
+            "repr": "",
+            "kind": "typeLiteral",
+            "typeLiteral": {
+              "methods": [],
+              "properties": [
+                {
+                  "name": "exception",
+                  "params": [],
+                  "computed": false,
+                  "optional": false,
+                  "tsType": {
+                    "repr": "IExceptionProps",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "IExceptionProps"
+                    }
+                  },
+                  "typeParams": []
+                }
+              ],
+              "callSignatures": [],
+              "indexSignatures": []
+            }
+          }
+        ]
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "ExceptionPropsPath",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 101,
+      "col": 0,
+      "byteIndex": 2523
+    },
+    "declarationKind": "export",
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "JoinPath",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "StringPath",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": [
+                  {
+                    "repr": "ExceptionProps",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "ExceptionProps"
+                    }
+                  }
+                ],
+                "typeName": "StringPath"
+              }
+            },
+            {
+              "repr": ".",
+              "kind": "literal",
+              "literal": {
+                "kind": "string",
+                "string": "."
+              }
+            }
+          ],
+          "typeName": "JoinPath"
+        }
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "ExtractStringPaths",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 84,
+      "col": 0,
+      "byteIndex": 1823
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Extracts the string paths from a {@link Props} object.\n",
+      "tags": [
+        {
+          "kind": "template",
+          "name": "T",
+          "doc": "- The type of the props object.\n"
+        },
+        {
+          "kind": "example",
+          "doc": "```ts\ntype Paths = ExtractStringPaths<{\n  a: {\n    b: {\n      c: string;\n    };\n    d: {\n      e: string;\n    };\n  };\n  f: {\n    g: string;\n  };\n}>;\n\n// Paths = \"a.b.c\" | \"a.d.e\" | \"f.g\"\n```"
+        }
+      ]
+    },
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "JoinPath",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "StringPath",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": [
+                  {
+                    "repr": "T",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "T"
+                    }
+                  }
+                ],
+                "typeName": "StringPath"
+              }
+            },
+            {
+              "repr": ".",
+              "kind": "literal",
+              "literal": {
+                "kind": "string",
+                "string": "."
+              }
+            }
+          ],
+          "typeName": "JoinPath"
+        }
+      },
+      "typeParams": [
+        {
+          "name": "T",
+          "constraint": {
+            "repr": "Props",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Props"
+            }
+          },
+          "default": {
+            "repr": "Props",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Props"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "FeatureProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 97,
+      "col": 0,
+      "byteIndex": 2304
+    },
+    "declarationKind": "export",
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "",
+        "kind": "intersection",
+        "intersection": [
+          {
+            "repr": "PackageProps",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "PackageProps"
+            }
+          },
+          {
+            "repr": "",
+            "kind": "typeLiteral",
+            "typeLiteral": {
+              "methods": [],
+              "properties": [
+                {
+                  "name": "feature",
+                  "params": [],
+                  "computed": false,
+                  "optional": false,
+                  "tsType": {
+                    "repr": "IFeatureProps",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "IFeatureProps"
+                    }
+                  },
+                  "typeParams": []
+                }
+              ],
+              "callSignatures": [],
+              "indexSignatures": []
+            }
+          }
+        ]
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "FeaturePropsPath",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 98,
+      "col": 0,
+      "byteIndex": 2374
+    },
+    "declarationKind": "export",
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "JoinPath",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "StringPath",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": [
+                  {
+                    "repr": "FeatureProps",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "FeatureProps"
+                    }
+                  }
+                ],
+                "typeName": "StringPath"
+              }
+            },
+            {
+              "repr": ".",
+              "kind": "literal",
+              "literal": {
+                "kind": "string",
+                "string": "."
+              }
+            }
+          ],
+          "typeName": "JoinPath"
+        }
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "FileProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 94,
+      "col": 0,
+      "byteIndex": 2176
+    },
+    "declarationKind": "export",
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "",
+        "kind": "intersection",
+        "intersection": [
+          {
+            "repr": "PackageProps",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "PackageProps"
+            }
+          },
+          {
+            "repr": "",
+            "kind": "typeLiteral",
+            "typeLiteral": {
+              "methods": [],
+              "properties": [
+                {
+                  "name": "file",
+                  "params": [],
+                  "computed": false,
+                  "optional": false,
+                  "tsType": {
+                    "repr": "IFileProps",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "IFileProps"
+                    }
+                  },
+                  "typeParams": []
+                }
+              ],
+              "callSignatures": [],
+              "indexSignatures": []
+            }
+          }
+        ]
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "FilePropsPath",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 95,
+      "col": 0,
+      "byteIndex": 2237
+    },
+    "declarationKind": "export",
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "JoinPath",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "StringPath",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": [
+                  {
+                    "repr": "FileProps",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "FileProps"
+                    }
+                  }
+                ],
+                "typeName": "StringPath"
+              }
+            },
+            {
+              "repr": ".",
+              "kind": "literal",
+              "literal": {
+                "kind": "string",
+                "string": "."
+              }
+            }
+          ],
+          "typeName": "JoinPath"
+        }
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "MetaProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 89,
+      "col": 0,
+      "byteIndex": 1918
+    },
+    "declarationKind": "export",
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "",
+        "kind": "typeLiteral",
+        "typeLiteral": {
+          "methods": [],
+          "properties": [
+            {
+              "name": "meta",
+              "params": [],
+              "computed": false,
+              "optional": false,
+              "tsType": {
+                "repr": "IMetaProps",
+                "kind": "typeRef",
+                "typeRef": {
+                  "typeParams": null,
+                  "typeName": "IMetaProps"
+                }
+              },
+              "typeParams": []
+            }
+          ],
+          "callSignatures": [],
+          "indexSignatures": []
+        }
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "PackageProps",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 91,
+      "col": 0,
+      "byteIndex": 2022
+    },
+    "declarationKind": "export",
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "",
+        "kind": "intersection",
+        "intersection": [
+          {
+            "repr": "MetaProps",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "MetaProps"
+            }
+          },
+          {
+            "repr": "DependencyProps",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "DependencyProps"
+            }
+          },
+          {
+            "repr": "",
+            "kind": "typeLiteral",
+            "typeLiteral": {
+              "methods": [],
+              "properties": [
+                {
+                  "name": "pkg",
+                  "params": [],
+                  "computed": false,
+                  "optional": false,
+                  "tsType": {
+                    "repr": "IPackageProps",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "IPackageProps"
+                    }
+                  },
+                  "typeParams": []
+                }
+              ],
+              "callSignatures": [],
+              "indexSignatures": []
+            }
+          }
+        ]
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "PackagePropsPath",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 92,
+      "col": 0,
+      "byteIndex": 2103
+    },
+    "declarationKind": "export",
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "JoinPath",
+        "kind": "typeRef",
+        "typeRef": {
+          "typeParams": [
+            {
+              "repr": "StringPath",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": [
+                  {
+                    "repr": "PackageProps",
+                    "kind": "typeRef",
+                    "typeRef": {
+                      "typeParams": null,
+                      "typeName": "PackageProps"
+                    }
+                  }
+                ],
+                "typeName": "StringPath"
+              }
+            },
+            {
+              "repr": ".",
+              "kind": "literal",
+              "literal": {
+                "kind": "string",
+                "string": "."
+              }
+            }
+          ],
+          "typeName": "JoinPath"
+        }
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "Props",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 22,
+      "col": 0,
+      "byteIndex": 394
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "A generic object type."
+    },
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "",
+        "kind": "typeLiteral",
+        "typeLiteral": {
+          "methods": [],
+          "properties": [],
+          "callSignatures": [],
+          "indexSignatures": [
+            {
+              "readonly": false,
+              "params": [
+                {
+                  "kind": "identifier",
+                  "name": "key",
+                  "optional": false,
+                  "tsType": {
+                    "repr": "string",
+                    "kind": "keyword",
+                    "keyword": "string"
+                  }
+                }
+              ],
+              "tsType": {
+                "repr": "any",
+                "kind": "keyword",
+                "keyword": "any"
+              }
+            }
+          ]
+        }
+      },
+      "typeParams": []
+    }
+  },
+  {
+    "kind": "typeAlias",
+    "name": "TemplateCallback",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/types.ts",
+      "line": 41,
+      "col": 0,
+      "byteIndex": 897
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "A callback function that accepts {@link Props} and returns a string.\n",
+      "tags": [
+        {
+          "kind": "template",
+          "name": "T",
+          "doc": "- The type of the props object.\n"
+        },
+        {
+          "kind": "param",
+          "name": "props",
+          "doc": "- The props object to use in the callback."
+        },
+        {
+          "kind": "return",
+          "doc": "The string result of the callback.\n"
+        },
+        {
+          "kind": "example",
+          "doc": "```ts\nconst template: TemplateCallback<{ name: string }> = (props) => `Hello, ${props.name}!`;\n\nconst result = template({ name: 'world' });\n\nconsole.log(result); // \"Hello, world!\"\n```"
+        }
+      ]
+    },
+    "typeAliasDef": {
+      "tsType": {
+        "repr": "",
+        "kind": "fnOrConstructor",
+        "fnOrConstructor": {
+          "constructor": false,
+          "tsType": {
+            "repr": "string",
+            "kind": "keyword",
+            "keyword": "string"
+          },
+          "params": [
+            {
+              "kind": "identifier",
+              "name": "props",
+              "optional": false,
+              "tsType": {
+                "repr": "T",
+                "kind": "typeRef",
+                "typeRef": {
+                  "typeParams": null,
+                  "typeName": "T"
+                }
+              }
+            }
+          ],
+          "typeParams": []
+        }
+      },
+      "typeParams": [
+        {
+          "name": "T",
+          "constraint": {
+            "repr": "Props",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Props"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "kind": "enum",
+    "name": "CliVerbosity",
+    "location": {
+      "filename": "file:///workspaces/pkgsvc/src/types/enums/cli_verbosity.ts",
+      "line": 10,
+      "col": 0,
+      "byteIndex": 169
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "The verbosity levels for the CLI."
+    },
+    "enumDef": {
+      "members": [
+        {
+          "name": "All",
+          "jsDoc": {
+            "doc": "All logging is enabled."
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/enums/cli_verbosity.ts",
+            "line": 14,
+            "col": 2,
+            "byteIndex": 239
+          }
+        },
+        {
+          "name": "Trace",
+          "jsDoc": {
+            "doc": "Finer-grained information (than `Debug`) useful for debugging the CLI are logged."
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/enums/cli_verbosity.ts",
+            "line": 18,
+            "col": 2,
+            "byteIndex": 345
+          }
+        },
+        {
+          "name": "Debug",
+          "jsDoc": {
+            "doc": "Fine-grained information useful for debugging the CLI are logged."
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/enums/cli_verbosity.ts",
+            "line": 23,
+            "col": 2,
+            "byteIndex": 438
+          }
+        },
+        {
+          "name": "Info",
+          "jsDoc": {
+            "doc": "Informational messages highlighting the progress of the CLI are logged."
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/enums/cli_verbosity.ts",
+            "line": 28,
+            "col": 2,
+            "byteIndex": 537
+          }
+        },
+        {
+          "name": "Warn",
+          "jsDoc": {
+            "doc": "Potentially harmful conditions are logged."
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/enums/cli_verbosity.ts",
+            "line": 33,
+            "col": 2,
+            "byteIndex": 606
+          }
+        },
+        {
+          "name": "Error",
+          "jsDoc": {
+            "doc": "Recoverable errors conditions are logged."
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/enums/cli_verbosity.ts",
+            "line": 38,
+            "col": 2,
+            "byteIndex": 674
+          }
+        },
+        {
+          "name": "None",
+          "jsDoc": {
+            "doc": "No logging is enabled."
+          },
+          "location": {
+            "filename": "file:///workspaces/pkgsvc/src/types/enums/cli_verbosity.ts",
+            "line": 43,
+            "col": 2,
+            "byteIndex": 724
+          }
+        }
+      ]
+    }
+  }
+]

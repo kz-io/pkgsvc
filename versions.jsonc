@@ -1,0 +1,61 @@
+/**
+ * This file is used to store the versions of the default dependencies.
+ * This makes it easier to update the versions of the dependencies for existing
+ * packages and ensuring consistent versions for new packages.
+ *
+ * The `match` is used to match dependencies. The `$@` is replaced with a regular
+ * expression matching a version expression and then replaced with the current version. The `$$` is replaced
+ * with the remainder of the URL. It is effectively a `.*`
+ *
+ * You can also replace using the `url` which will match the entire URL and replace
+ * it with the `replaceUrl` URL.
+ *
+ * We use a home-grown tool to keep track of  the packages and their dependencies,
+ * versions and what is being imported. It uses github branches, tags, and
+ * releases to collect the versions and then reviews the public package for
+ * dependencies. It is used by the bump-versions tool to update the versions.
+
+
+ TODO: Elaborate and flesh this out. Will be pretty cool to have a more dynamic feature.
+*/
+{
+  "deps.ts": [
+    {
+      "name": "Deno STD",
+      "match": "https://deno.land/std$@/$$",
+      "enforceVersion": "0.213.0"
+    },
+    {
+      "name": "kz.io/core-types",
+      "match": "https://denopkg.com/kz-io/core-types$@/$$",
+      "enforceVersion": "dev"
+    },
+    {
+      "name": "kz.io/core-exceptions",
+      "match": "https://denopkg.com/kz-io/core-types$@/$$",
+      "enforceVersion": "dev"
+    },
+    {
+      "name": "kz.io/core",
+      "match": "https://denopkg.com/kz-io/core$@/$$",
+      "enforceVersion": "dev"
+    },
+    {
+      "name": "kz.io/test",
+      "match": "https://denopkg.com/kz-io/test@dev/mod.ts",
+      "replaceUrl": "https://denopkg.com/kz-io/test-2@migrate/mod.ts"
+    },
+    {
+      "name": "kz.io/test",
+      "match": "https://denopkg.com/kz-io/test$@/mod.ts",
+      "replaceUrl": "https://denopkg.com/kz-io/test-2@migrate/mod.ts"
+    }
+  ],
+  "dev_deps.ts": [
+    {
+      "name": "Deno STD",
+      "match": "https://deno.land/std$@/$$",
+      "enforceVersion": "0.213.0"
+    }
+  ]
+}
